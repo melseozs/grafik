@@ -9,12 +9,13 @@
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  
 </head>
 
 <body>
   <header class="baslik">
     <h1>Global Tekstil Markalarının Karşılaştırmalı Skor Analizi (2025)</h1>
-    <p>Grafik: Scroll ile Etkileşimli Bar Chart Race</p>
+    <p>Grafik: Scroll ile Etkileşimli Görsel</p>
     <a class="ekle-btn" href="ekle.html">Marka Ekle</a>
   </header>
 
@@ -35,8 +36,7 @@ when looking at its layout. The point of using Lorem Ipsum is that it has a more
 distribution of letters, as opposed to using 'Content here, content here', making it look like 
 readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as 
 their default model text, and a search for 'lorem ipsum' will uncover many web sites still in 
-their infancy. Various versions have evolved over the years, sometimes by accident,
- sometimes on purpose (injected humour and the like).
+their infancy.
     </p>
   </section>
 
@@ -66,10 +66,16 @@ their infancy. Various versions have evolved over the years, sometimes by accide
 
     <div class="grafik">
       <div id="chartdiv"></div>
+      <div class="grafik-secici-wrapper">
+        <label for="grafikSecici">Grafik Türü:</label>
+        <select id="grafikSecici">
+          <option value="bar">Bar Grafik</option>
+          <option value="line">Çizgi Grafik</option>
+        </select>
+      </div>
     </div>
   </div>
 
-  
   <script src="script.js"></script>
 </body>
 </html>
