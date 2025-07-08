@@ -5,10 +5,6 @@ am5.ready(function () {
 
   let chart = root.container.children.push(
     am5xy.XYChart.new(root, {
-      panX: false,
-      panY: false,
-      wheelX: "none",
-      wheelY: "none",
       layout: root.verticalLayout
     })
   );
@@ -42,13 +38,32 @@ am5.ready(function () {
     })
   );
 
+series.columns.template.adapters.add("tooltipText", function () {
+  return "{categoryY}: {valueX}%";
+});
+
+
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    locationX: 1,
+    locationY: 0.5,
+    sprite: am5.Label.new(root, {
+      text: "{valueX}%",
+      fill: am5.color(0x000000),
+      centerY: am5.p50,
+      centerX: am5.p100,
+      populateText: true,
+      fontSize: 16
+    })
+  });
+});
+
+
   series.columns.template.setAll({
     cornerRadiusTL: 10,
     cornerRadiusBL: 10,
-    cornerRadiusTR: 10,
-    cornerRadiusBR: 10,
-    fillOpacity: 0.7,
-    height: am5.percent(30)
+    fillOpacity: 0.8,
+    height: am5.percent(40)
   });
 
   const markaVerileri = {
@@ -79,11 +94,26 @@ am5.ready(function () {
     ]
   };
 
-  // Gelen veri varsa grafik verisine de ekle
   const gelen = localStorage.getItem("yeniMarka");
   if (gelen) {
     const yeni = JSON.parse(gelen);
     markaVerileri[yeni.isim] = yeni.veriler;
+
+    // Kart olarak ekle
+    const container = document.getElementById("veriContainer");
+    const yeniDiv = document.createElement("section");
+    yeniDiv.className = "veri-blok";
+    yeniDiv.setAttribute("data-marka", yeni.isim);
+    yeniDiv.innerHTML = `
+      <h2>${yeni.isim}</h2>
+      <p>${yeni.aciklama}</p>
+    `;
+    container.appendChild(yeniDiv);
+
+    // Sayfa açıldığında grafikte bu markayı göster
+    yAxis.data.setAll(yeni.veriler);
+    series.data.setAll(yeni.veriler);
+
     localStorage.removeItem("yeniMarka");
   }
 
@@ -91,18 +121,19 @@ am5.ready(function () {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const marka = entry.target.dataset.marka;
-        const data = markaVerileri[marka] || [{ ozellik: "Bilinirlik", skor: 0 }];
-        yAxis.data.setAll(data);
-        series.data.setAll(data, 1000);
+        const data = markaVerileri[marka];
+        if (data) {
+          yAxis.data.setAll(data);
+          series.data.setAll(data, 1000);
+        }
       }
     });
   }, { threshold: 0.6 });
 
   function guncelleObserver() {
-    const veriBloklar = document.querySelectorAll(".veri-blok");
-    veriBloklar.forEach(blok => observer.observe(blok));
+    const bloklar = document.querySelectorAll(".veri-blok");
+    bloklar.forEach(blok => observer.observe(blok));
   }
 
-  guncelleObserver();
-  setTimeout(guncelleObserver, 500);
+  setTimeout(guncelleObserver, 300);
 });

@@ -4,46 +4,32 @@
   <meta charset="UTF-8">
   <title>Marka Ekle</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom right, #f3e7ff, #95bafa);
-      height: 100vh;
-      margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
 
     .form-container {
-      background-color: white;
+      background: white;
       padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       max-width: 400px;
       width: 100%;
-      text-align: center;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #95bafa;
-    }
-
-    input, button {
-      padding: 12px;
-      border: none;
-      border-radius: 15px;
-      font-size: 1rem;
-      margin-bottom: 15px;
+    input, textarea, button {
       width: 100%;
-    }
-
-    input {
-      background-color: #f3f3f3;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
     }
 
     button {
@@ -51,12 +37,10 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
 
     button:hover {
       background-color: #8b5fc1;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -68,6 +52,7 @@
       <input type="number" id="bilinirlik" placeholder="Bilinirlik (%)" required />
       <input type="number" id="fiyat" placeholder="Fiyat/Performans (%)" required />
       <input type="number" id="moda" placeholder="Moda Takibi (%)" required />
+      <textarea id="aciklama" placeholder="Marka hakkında kısa açıklama..." required></textarea>
       <button type="submit">Markayı Kaydet</button>
     </form>
   </div>
@@ -77,16 +62,18 @@
       e.preventDefault();
 
       const ad = document.getElementById("markaAdi").value;
-      const b = document.getElementById("bilinirlik").value;
-      const f = document.getElementById("fiyat").value;
-      const m = document.getElementById("moda").value;
+      const b = parseInt(document.getElementById("bilinirlik").value);
+      const f = parseInt(document.getElementById("fiyat").value);
+      const m = parseInt(document.getElementById("moda").value);
+      const aciklama = document.getElementById("aciklama").value;
 
       const yeniMarka = {
         isim: ad,
+        aciklama: aciklama,
         veriler: [
-          { ozellik: "Bilinirlik", skor: parseInt(b) },
-          { ozellik: "Fiyat/Performans", skor: parseInt(f) },
-          { ozellik: "Moda Takibi", skor: parseInt(m) }
+          { ozellik: "Bilinirlik", skor: b },
+          { ozellik: "Fiyat/Performans", skor: f },
+          { ozellik: "Moda Takibi", skor: m }
         ]
       };
 
