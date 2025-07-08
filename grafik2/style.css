@@ -108,3 +108,22 @@ body, html {
   background-color: #7e5ba6;
   box-shadow: 0 0 10px #ccc;
 }
+.intro {
+  padding: 160px 30px 60px 30px;
+  text-align: center;
+  background-color:#f8f9fa; 
+}
+
+.intro h2 {
+  font-size: 2rem;
+  color: #6b4faf;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #333;
+}
