@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>En İyi Tekstil Markaları</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+</head>
+
+<body>
+  <header class="baslik">
+    <h1>Global Tekstil Markalarının Karşılaştırmalı Skor Analizi (2025)</h1>
+    <p>Grafik: Scroll ile Etkileşimli Bar Chart Race</p>
+    <a class="ekle-btn" href="ekle.html">Marka Ekle</a>
+  </header>
+
+  <div class="container">
+    <div class="veriler" id="veriContainer">
+      <section class="veri-blok" data-marka="ZARA"  style="margin-top: 200px;"><h2>ZARA</h2><p>ZARA, İspanya merkezli bir hazır giyim markasıdır.</p></section>
+      <section class="veri-blok" data-marka="H&M"><h2>H&M</h2><p>H&M, İsveç kökenli bir perakende devidir.</p></section>
+      <section class="veri-blok" data-marka="Uniqlo"><h2>Uniqlo</h2><p>Uniqlo, Japonya merkezli bir markadır.</p></section>
+      <section class="veri-blok" data-marka="Gucci"><h2>Gucci</h2><p>Gucci, İtalyan lüks moda markasıdır.</p></section>
+      <section class="veri-blok" data-marka="Nike"><h2>Nike</h2><p>Nike, spor giyimin dev ismidir.</p></section>
+    </div>
+    <div class="grafik">
+      <div id="chartdiv"></div>
+    </div>
+  </div>
+
+  <script>
+    // Yeni marka kartını sayfaya ekle
+    const gelen = localStorage.getItem("yeniMarka");
+    if (gelen) {
+      const yeni = JSON.parse(gelen);
+      const container = document.getElementById("veriContainer");
+      const yeniDiv = document.createElement("section");
+      yeniDiv.className = "veri-blok";
+      yeniDiv.setAttribute("data-marka", yeni.isim);
+      yeniDiv.innerHTML = `
+        <h2>${yeni.isim}</h2>
+        <p>${yeni.isim} markası kullanıcı tarafından eklendi.</p>
+      `;
+      container.appendChild(yeniDiv);
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

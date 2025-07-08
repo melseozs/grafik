@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  line-height: 1.7;
+  height: 100%;
+  background-color: #8f6767;
+}
+
+.baslik {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #ffffff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.baslik h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+.baslik p {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+}
+
+.container {
+  display: flex;
+  height: auto;
+}
+
+.veriler {
+  width: 50%;
+  padding: 100px;
+  background-color: #f8f9fa;
+  padding-top: 100px;
+  
+}
+
+.veri-blok {
+  background: #fff;
+  padding: 15px;
+  margin: 20px 0 20px 40px; 
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 60%;         
+  max-width: 400px;   
+  transition: transform 0.3s ease;
+  margin-left: 320px;
+  margin-bottom: 100vh;
+  
+}
+
+.veri-blok h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.veri-blok p {
+  font-size: 1rem;
+}
+
+.grafik {
+  width: 50%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+}
+
+#chartdiv {
+  width: 80%;
+  height: 250px;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.ekle-btn {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  background-color: #95bafa;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.ekle-btn:hover {
+  background-color: #7e5ba6;
+  box-shadow: 0 0 10px #ccc;
+}
